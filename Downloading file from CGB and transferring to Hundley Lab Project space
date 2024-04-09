@@ -1,0 +1,13 @@
+To download data from CGB---go here:
+https://lims.cgb.indiana.edu/outbox/HundleyLab/
+
+Username is HHundley
+Password is 9MJ31gS7
+
+Find your run folder (usually a tar file) and download to own Desktop
+
+# Then make sure to put the tar file on the Hundley lab server as well as the HundleyLab slate project space
+
+tar -xvf archive*  # to unload tar file and see individual contents
+
+scp GSF3874-AM* amahapat@quartz.uits.iu.edu:/N/slate/amahapat/GSF3874       # Transfer files to your own slate
