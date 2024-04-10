@@ -12,3 +12,7 @@ bcftools mpileup -Ou -f ./genome/assembly.fasta "./results/aligned/GSF3874-AM-A5
 ***** Note: none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid *****    # tried this command and that was the message displayed
 [mpileup] 1 samples in 1 input files                                                             
 [mpileup] maximum number of reads per input file set to -d 250     
+
+# Sometimes, the error "bcftools command not found" error pops up. Try this:  
+
+conda install -c bioconda bcftools 
