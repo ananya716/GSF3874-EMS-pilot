@@ -3,6 +3,6 @@ Did usual alignment till before featurecounts
 
 conda create -n EMS -c conda-forge -c bioconda samtools bedtools
 
-conda install -c bioconda gatk   #GATK needed for running RealignerTargetCreator command later
+conda create -n gatk4 -c conda-forge -c bioconda gatk4   #GATK needed for running RealignerTargetCreator command later
 
 conda list   # double check download went through 
