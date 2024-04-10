@@ -2,3 +2,5 @@
 Did usual alignment till before featurecounts
 
 conda create -n EMS -c conda-forge -c bioconda samtools bedtools
+
+conda install -c bioconda gatk 
