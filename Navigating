@@ -1,0 +1,4 @@
+
+Did usual alignment till before featurecounts
+
+conda create -n EMS -c conda-forge -c bioconda samtools bedtools
