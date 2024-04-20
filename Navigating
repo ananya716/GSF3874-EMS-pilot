@@ -44,3 +44,5 @@ bcftools mpileup -Ou -f assembly.fasta mutants.nodup.bam | bcftools call -mv -Ob
 ------ none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
 [mpileup] 1 samples in 1 input files
 [mpileup] maximum number of reads per input file set to -d 250 ------- (this is what was displayed when code began to run)
+
+# after running this command, there was a bcf and a vcf file 
