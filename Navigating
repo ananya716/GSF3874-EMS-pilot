@@ -17,4 +17,26 @@ bcftools mpileup -Ou -f ./genome/assembly.fasta "./results/aligned/GSF3874-AM-A5
 
 conda install -c bioconda bcftools 
 
- samtools mer -@ 8 ../nonmutantsmerge.bam GSF3874-AM-A5-NM1_S4_R1_001_Aligned.sortedByCoord.out.bam GSF3874-AM-A5-NM2_S5_R1_001_Aligned.sortedByCoord.out.bam GSF3874-AM-A5-NM3_S6_R1_001_Aligned.sortedByCoord.out.bam
+mkdir Variantcall
+
+# merge 3 mutants bam files together (do the same for the nonmutants) 
+
+samtools merge -@ 8 ../mutantsmerge.bam GSF3874-AM-A5-M1_S4_R1_001_Aligned.sortedByCoord.out.bam GSF3874-AM-A5-M2_S5_R1_001_Aligned.sortedByCoord.out.bam GSF3874-AM-A5-M3_S6_R1_001_Aligned.sortedByCoord.out.bam
+
+samtools merge -@ 8 ../nonmutantsmerge.bam GSF3874-AM-A5-NM1_S4_R1_001_Aligned.sortedByCoord.out.bam GSF3874-AM-A5-NM2_S5_R1_001_Aligned.sortedByCoord.out.bam GSF3874-AM-A5-NM3_S6_R1_001_Aligned.sortedByCoord.out.bam
+
+#copy genome file, snp file (from Hundley Lab Project Space), and aligned bam into Variantcall directory
+
+scp assembly.fasta /N/slate/amahapat/GSF3874/VariantCalling 
+scp c.elegans_WS275.snps.sorted.bed /N/slate/amahapat/GSF3874/VariantCalling 
+scp *mutants.merged.bam /N/slate/amahapat/GSF3874/VariantCalling 
+scp *nonmutants.merged.bam /N/slate/amahapat/GSF3874/VariantCalling 
+
+#remove duplicate reads from bam file (takes ~5 minutes per file)
+
+ samtools rmdup mutantsmerged.bam mutants.nodup.bam
+ samtools rmdup nonmutantsmerged.bam nonmutants.nodup.bam
+
+#Call the variant and clean up the output file with one line (takes hours- run overnight) (did not work with samtools mpileup)
+
+bcftools mpileup -Ou -f assembly.fasta mutants.nodup.bam | bcftools call -mv -Ob -o mutantcalls.bcf
