@@ -39,4 +39,8 @@ scp *nonmutants.merged.bam /N/slate/amahapat/GSF3874/VariantCalling
 
 #Call the variant and clean up the output file with one line (takes hours- run overnight) (did not work with samtools mpileup)
 
-bcftools mpileup -Ou -f assembly.fasta mutants.nodup.bam | bcftools call -mv -Ob -o mutantcalls.bcf
+bcftools mpileup -Ou -f assembly.fasta mutants.nodup.bam | bcftools call -mv -Ob -o mutantcalls.bcf 
+
+------ none of --samples-file, --ploidy or --ploidy-file given, assuming all sites are diploid
+[mpileup] 1 samples in 1 input files
+[mpileup] maximum number of reads per input file set to -d 250 ------- (this is what was displayed when code began to run)
