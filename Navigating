@@ -16,3 +16,5 @@ bcftools mpileup -Ou -f ./genome/assembly.fasta "./results/aligned/GSF3874-AM-A5
 # Sometimes, the error "bcftools command not found" error pops up. Try this:  
 
 conda install -c bioconda bcftools 
+
+ samtools mer -@ 8 ../nonmutantsmerge.bam GSF3874-AM-A5-NM1_S4_R1_001_Aligned.sortedByCoord.out.bam GSF3874-AM-A5-NM2_S5_R1_001_Aligned.sortedByCoord.out.bam GSF3874-AM-A5-NM3_S6_R1_001_Aligned.sortedByCoord.out.bam
