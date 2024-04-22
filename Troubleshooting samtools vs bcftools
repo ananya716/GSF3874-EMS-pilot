@@ -1,0 +1,5 @@
+### python file used is variantcopy.py (that file has minor changes made by NDK that works)
+
+bcftools mpileup -f assembly.fasta mutants.nodup.bam | bcftools call -mv -Ob -o mutantscalls.vcf
+
+After running python script, this results in ~ 5 variants
