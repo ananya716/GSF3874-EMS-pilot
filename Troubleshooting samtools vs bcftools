@@ -2,4 +2,6 @@
 
 bcftools mpileup -f assembly.fasta mutants.nodup.bam | bcftools call -mv -Ob -o mutantscalls.vcf
 
+python variant.py --v mutants.rmdup.mpileup.vcf --snp c.elegans.WS275.snps.nostrand.sorted.bed --o mutantsvariants.csv 
+
 After running python script, this results in ~ 5 variants
