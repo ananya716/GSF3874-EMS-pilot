@@ -57,3 +57,4 @@ scp variant.py amahapat@quartz.uits.iu.edu:/N/slate/amahapat/GSF3874/Variantcall
 
 python variant.py --v mutants.rmdup.mpileup.vcf --snp c.elegans.WS275.snps.nostrand.sorted.bed --o mutantsvariants.csv 
 
+(when I was trying to run this, it kept giving me errors in specific lines of the python script. Trying to change conda env and run again)
