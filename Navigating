@@ -27,10 +27,10 @@ samtools merge -@ 8 ../nonmutantsmerge.bam GSF3874-AM-A5-NM1_S4_R1_001_Aligned.s
 
 #copy genome file, snp file (from Hundley Lab Project Space), and aligned bam into Variantcall directory
 
-scp assembly.fasta /N/slate/amahapat/GSF3874/VariantCalling 
-scp c.elegans_WS275.snps.sorted.bed /N/slate/amahapat/GSF3874/VariantCalling 
-scp *mutants.merged.bam /N/slate/amahapat/GSF3874/VariantCalling 
-scp *nonmutants.merged.bam /N/slate/amahapat/GSF3874/VariantCalling 
+scp assembly.fasta /N/slate/amahapat/GSF3874/Variantcall 
+scp c.elegans_WS275.snps.sorted.bed /N/slate/amahapat/GSF3874/Variantcall
+scp *mutants.merged.bam /N/slate/amahapat/GSF3874/Variantcall
+scp *nonmutants.merged.bam /N/slate/amahapat/GSF3874/Variantcall
 
 #remove duplicate reads from bam file (takes ~5 minutes per file)
 
@@ -46,4 +46,14 @@ bcftools mpileup -f assembly.fasta mutants.nodup.bam | awk '$5 != "<*>"' | tail 
 [mpileup] 1 samples in 1 input files
 [mpileup] maximum number of reads per input file set to -d 250 ------- (this is what was displayed when code began to run)
 
+# Transfer variant.py file from the lab OneDrive server to your Variantcall directory
+
+# On local terminal- 
+
+cd Desktop 
+scp variant.py amahapat@quartz.uits.iu.edu:/N/slate/amahapat/GSF3874/Variantcall
+
+# Back to ThinLinc
+
+python variant.py --v mutants.rmdup.mpileup.vcf --snp c.elegans.WS275.snps.nostrand.sorted.bed --o mutantsvariants.csv 
 
