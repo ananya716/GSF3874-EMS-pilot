@@ -10,3 +10,5 @@ samtools sort M1aln.sam -o M1aln.sorted.sam           # sorting the sam file
 samtools view -Sb -o M1aln.bam M1aln.sorted.sam          # converting sam output to bam file 
 
 samtools index M1aln.bam                                 # For this command to work, sam file had to be sorted first 
+
+conda install freebayes                                 # installing the variant calling software freebayes
