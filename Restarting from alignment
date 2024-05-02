@@ -13,4 +13,6 @@ samtools index M1aln.bam                                 # For this command to w
 
 bcftools mpileup -f assembly.fasta M1aln.bam > M1.vcf
 
+bcftools view M1.vcf > M1.var.vcf
+
 
