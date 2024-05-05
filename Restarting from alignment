@@ -11,8 +11,6 @@ samtools view -Sb -o M1aln.bam M1aln.sorted.sam          # converting sam output
 
 samtools index M1aln.bam                                 # For this command to work, sam file had to be sorted first 
 
-bcftools mpileup -f assembly.fasta M1aln.bam > M1.vcf
-
-bcftools view M1.vcf > M1.var.vcf
+bcftools mpileup -f assembly.fasta NM2aln.bam | awk '$5 != "<*>"' > NM2.var.awk.vcf
 
 
