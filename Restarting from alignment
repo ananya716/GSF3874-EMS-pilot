@@ -14,3 +14,4 @@ samtools index M1aln.bam                                 # For this command to w
 bcftools mpileup -f assembly.fasta NM2aln.bam | awk '$5 != "<*>"' > NM2.var.awk.vcf
 
 
+python finalvarianttest.py --m1 M1.var.awk.vcf --m2 M2.var.awk.vcf --m3 M3.var.awk.vcf --nm1 NM1.var.awk.vcf --nm2 NM2.var.awk.vcf --nm3 NM3.var.awk.vcf --snp c.elegans.WS275.snps.nostrand.sorted.bed --o finallistofvariants.csv
