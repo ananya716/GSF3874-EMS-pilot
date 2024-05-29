@@ -8,6 +8,8 @@ Find your run folder (usually a tar file) and download to own Desktop
 
 # Then make sure to put the tar file on the Hundley lab server as well as the HundleyLab slate project space
 
+scp **tar file** amahapat@quartz.uits.iu.edu:/N/project/HundleyLab/GSF3930
+
 tar -xvf archive*  # to unload tar file and see individual contents
 
 scp GSF3874-AM* amahapat@quartz.uits.iu.edu:/N/slate/amahapat/GSF3874       # Transfer files to your own slate
