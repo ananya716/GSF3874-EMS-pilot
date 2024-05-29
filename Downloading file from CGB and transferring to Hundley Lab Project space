@@ -15,5 +15,3 @@ tar -xvf archive*  # to unload tar file and see individual contents
 scp GSF3874-AM* amahapat@quartz.uits.iu.edu:/N/slate/amahapat/GSF3874       # Transfer files to your own slate
 
 
-(Just FYI- if you ever need more space and put all the unloaded files back to the tar file- 
-tar -cvf archive-GSF3747.run1.tar /N/project/HundleyLab/GSF3747_)
