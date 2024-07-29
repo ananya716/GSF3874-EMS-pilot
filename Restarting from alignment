@@ -15,3 +15,11 @@ bcftools mpileup -f assembly.fasta NM2aln.bam | awk '$5 != "<*>"' > NM2.var.awk.
 
 
 python finalvarianttest.py --m1 M1.var.awk.vcf --m2 M2.var.awk.vcf --m3 M3.var.awk.vcf --nm1 NM1.var.awk.vcf --nm2 NM2.var.awk.vcf --nm3 NM3.var.awk.vcf --snp c.elegans.WS275.snps.nostrand.sorted.bed --o finallistofvariants.csv
+
+#### Paired end reads for A3 M1 ####
+
+bwa index -p bwaindex assembly.fasta  
+
+bwa mem bwaindex GSF3976-A3_M1_S15_R1_001.fastq GSF3976-A3_M1_S15_R2_001.fastq > A3M1aln.sam  
+
+
