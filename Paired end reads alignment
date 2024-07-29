@@ -1,0 +1,45 @@
+# Create an output directory for aligned reads.
+
+mkdir -p results/aligned
+
+STAR \
+    --runThreadN 8 \
+    --outFilterMultimapNmax 1 \
+    --outFilterScoreMinOverLread .66 \
+    --outFilterMismatchNmax 10 \
+    --outFilterMismatchNoverLmax .3 \
+    --runMode alignReads \
+    --genomeDir genome/index \
+    --readFilesIn /N/slate/amahapat/GSF3964/GSF3964-DP_5_S14_R1_001.fastq /N/slate/amahapat/GSF3964/GSF3964-DP_5_S14_R2_001.fastq 
+    --outFileNamePrefix $PREFIX \
+    --outSAMattributes All \
+    --outSAMtype BAM SortedByCoordinate
+
+mkdir -p results/counts
+
+conda create -n featurecounts -c bioconda subread
+
+conda install bioconda::bioconductor-rsubread
+
+# Count reads.
+
+BAMS=$(find ./results/aligned -name "*\.bam")
+
+conda activate featurecounts
+
+featureCounts \
+  -a genome/annotation.gtf \
+  -o results/counts/counts.tsv \
+  -t gene \
+  -g gene_id \
+  --largestOverlap \
+  --readExtension3 150 \
+  --primary \
+  -p \
+  -T 8 \
+  ${BAMS}
+
+#Transfer file to desktop
+
+On local terminal, type cd Desktop
+scp amahapat@quartz.uits.iu.edu:/N/slate/amahapat/GSF3964/results/counts/counts.tsv .
